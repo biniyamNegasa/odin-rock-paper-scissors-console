@@ -54,33 +54,35 @@ function playRound(humanChoice, computerChoice) {
         computerScore += 1;
         
     }
+    console.log(`Your Score: ${humanScore}`);
+    console.log(`Computer Score: ${computerScore}`);
 
 }
 
 
-function playGame() {
-    let humanChoice;
-    let computerChoice;
-    console.log("****************");
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i+1}`);
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
-        console.log(`You chose: ${humanChoice}      computer chose: ${computerChoice}`);
-        playRound(humanChoice, computerChoice);
-        console.log("****************");
-    }
+// function playGame() {
+//     let humanChoice;
+//     let computerChoice;
+//     console.log("****************");
+//     for (let i = 0; i < 5; i++) {
+//         console.log(`Round ${i+1}`);
+//         humanChoice = getHumanChoice();
+//         computerChoice = getComputerChoice();
+//         console.log(`You chose: ${humanChoice}      computer chose: ${computerChoice}`);
+//         playRound(humanChoice, computerChoice);
+//         console.log("****************");
+//     }
 
-    if (humanScore > computerScore) {
-        console.log(`You have won! Congratulations! Your total score is: ${humanScore}/5.`)
-    }
-    else if (humanScore == computerScore) {
-        console.log(`It's a draw! Your total score is: ${humanScore}/5.`)
-    }
+//     if (humanScore > computerScore) {
+//         console.log(`You have won! Congratulations! Your total score is: ${humanScore}/5.`)
+//     }
+//     else if (humanScore == computerScore) {
+//         console.log(`It's a draw! Your total score is: ${humanScore}/5.`)
+//     }
 
-    else {
-        console.log(`You have lost! Your total score is: ${humanScore}/5.`)
-    }
-}
+//     else {
+//         console.log(`You have lost! Your total score is: ${humanScore}/5.`)
+//     }
+// }
 
-playGame();
+// playGame();
