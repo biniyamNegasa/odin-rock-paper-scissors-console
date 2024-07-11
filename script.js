@@ -23,6 +23,7 @@ list.addEventListener('click', function (event) {
         }
     });
 
+
 function getComputerChoice() {
 
     let probability = Math.random() * 100;
@@ -38,22 +39,46 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    console.log(`You chose: ${humanChoice}         Computer chose: ${computerChoice}`);
-    if (humanChoice == computerChoice) {
-        console.log("It's a draw!");
+    const div = document.querySelector("div.content");
+    if ( humanScore == 0 && computerScore == 0) {
+        div.replaceChildren();
     }
 
+    const choiceDiv = document.createElement("div");
+    const resultDiv = document.createElement("div");
+    const totalScoreDiv = document.createElement("div");
+
+
+    div.appendChild(choiceDiv);
+    div.appendChild(resultDiv);
+    div.appendChild(totalScoreDiv);
+    
+    choiceDiv.textContent = `You chose: ${humanChoice}         Computer chose: ${computerChoice}`;
+    
+    if (humanChoice == computerChoice) {
+        resultDiv.textContent = "It's a draw!";
+    }
+    
     else if ((humanChoice == rock && computerChoice == scissors) || (humanChoice == scissors && computerChoice == paper) || (humanChoice == paper && computerChoice == rock)) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        resultDiv.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
         humanScore += 1;
     }
     
     else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        resultDiv.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
         computerScore += 1;
         
     }
-    console.log(`Your Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    totalScoreDiv.textContent = `Your Score: ${humanScore}/5      Computer Score: ${computerScore}/5`;
+    
+    if (humanScore == 5 || computerScore == 5) {
+        const gameOver = document.createElement("div");
+        gameOver.textContent = "Game Over!";
+        div.appendChild(gameOver);
+
+        humanScore = 0;
+        computerScore = 0;
+        
+    }
 
 }
