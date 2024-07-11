@@ -6,6 +6,23 @@ let humanScore = 0;
 let computerScore = 0;
 
 
+const list = document.querySelector("ul");
+
+list.addEventListener('click', function (event) {
+        let target = event.target;
+        switch (target.id) {
+            case 'rock':
+                playRound(rock, getComputerChoice());
+                break;
+            case 'paper':
+                playRound(paper, getComputerChoice());
+                break;
+            case 'scissors':
+                playRound(scissors, getComputerChoice());
+                break;
+        }
+    });
+
 function getComputerChoice() {
 
     let probability = Math.random() * 100;
@@ -20,26 +37,8 @@ function getComputerChoice() {
     return scissors;
 }
 
-
-// console.log(getComputerChoice());
-
-
-function getHumanChoice() {
-    let choice = prompt("Enter a valid choice: ").toLowerCase();
-
-    if (choice != rock && choice != paper && choice != scissors) {
-        return getHumanChoice();
-    }
-
-    return choice;
-
-}
-
-// console.log(getHumanChoice());
-
-
-
 function playRound(humanChoice, computerChoice) {
+    console.log(`You chose: ${humanChoice}         Computer chose: ${computerChoice}`);
     if (humanChoice == computerChoice) {
         console.log("It's a draw!");
     }
@@ -58,31 +57,3 @@ function playRound(humanChoice, computerChoice) {
     console.log(`Computer Score: ${computerScore}`);
 
 }
-
-
-// function playGame() {
-//     let humanChoice;
-//     let computerChoice;
-//     console.log("****************");
-//     for (let i = 0; i < 5; i++) {
-//         console.log(`Round ${i+1}`);
-//         humanChoice = getHumanChoice();
-//         computerChoice = getComputerChoice();
-//         console.log(`You chose: ${humanChoice}      computer chose: ${computerChoice}`);
-//         playRound(humanChoice, computerChoice);
-//         console.log("****************");
-//     }
-
-//     if (humanScore > computerScore) {
-//         console.log(`You have won! Congratulations! Your total score is: ${humanScore}/5.`)
-//     }
-//     else if (humanScore == computerScore) {
-//         console.log(`It's a draw! Your total score is: ${humanScore}/5.`)
-//     }
-
-//     else {
-//         console.log(`You have lost! Your total score is: ${humanScore}/5.`)
-//     }
-// }
-
-// playGame();
